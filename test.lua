@@ -2,4 +2,6 @@
 -- for osx
 package.cpath = package.cpath .. ";?.dylib"
 local signal = require "lsignal"
-print(signal.SIGABRT)
+for k,v in pairs(signal) do
+    print (k,v)
+end

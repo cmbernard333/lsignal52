@@ -21,6 +21,7 @@ static const struct lua_signal lua_signals[] = {{"SIGABRT", SIGABRT},
 /* prototypes */
 static int lua_Signal(lua_State *L);
 static int lua_Raise(lua_State *L);
+
 static const struct luaL_Reg lsignal_lib[] = {
     {"signal", lua_Signal}, {"raise", lua_Raise}, {NULL, NULL}};
 
@@ -41,8 +42,7 @@ int luaopen_lsignal(lua_State *L) {
   lua_newtable(L);
   luaL_setfuncs(L, lsignal_lib, 0);
   /* push another named table */
-  lua_pushstring(L, LUA_SIGNAL);
-  lua_newtable(L);
+  lua_pushvalue(L, -1);
   /* push on signal names into table */
   while (lua_signals[i].name != NULL) {
     /* signal table */

@@ -38,10 +38,8 @@ release: CFLAGS+=-O2
 release: all
 
 all: lsignal
-	@echo "LFLAGS: $(LFLAGS)"
 	$(CC) $(LFLAGS) -o $(TARGET) $(OBJ) 
 lsignal:
-	@echo "CFLAGS: $(CFLAGS)"
 	$(CC) $(CFLAGS) $(SOURCES)
 
 clean:
